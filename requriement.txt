@@ -30,7 +30,7 @@ Books
         - ✅ to get all books 
         - ✅ to get specific books 
         - ✅ to get a list of books based on category
-        - to get a list of books based on author
+        - ✅ 🔥 to get a list of books based on author
 
     - POST
         - add a new book
@@ -47,8 +47,8 @@ Books
 Authors
 
     - GET
-        - to get all authors
-        - to get specific author
+        - ✅ to get all authors
+        - 🔥to get specific author --> task
         - to get list of author based on book
         
     - POST
@@ -65,9 +65,9 @@ Authors
 Publications
 
     - GET
-        - to get all publication
-        - to get specific publication
-        - to get list of publication based on a book
+        - 🔥 to get all publication
+        - 🔥 to get specific publication
+        - 🔥 to get list of publication based on a book
 
     - POST
         - add new publication

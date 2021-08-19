@@ -28,7 +28,6 @@ ourApp.get("/books", (req, res) => {
 
 
 
-//get specific book based on ISBN
 // Route        -- books/:bookID
 // Des          -- to get specific book based on ISBN
 // Access       -- public
@@ -45,8 +44,7 @@ ourApp.get("/books/:bookID" , (req, res) => {
 
 
 
-//get specific book based on ISBN
-// Route        -- books
+// Route        -- /books/c/:category
 // Des          -- to get a list of books based on category
 // Access       -- public
 // Method       -- get
@@ -60,6 +58,39 @@ ourApp.get("/books/c/:category" , (req, res) => {
 
 
     return res.json({books : specificBook});
+});
+
+
+
+
+// Route        -- /books/a/:author
+// Des          -- to get a list of books based author
+// Access       -- public
+// Method       -- get
+// Params       -- author
+// Body         -- none
+
+ourApp.get("/books/a/:author" , (req, res) => {
+    const specificBook = database.books.filter((book) => book.authors.indexOf(req.params.author));
+    console.log(specificBook);
+    return res.json({books : specificBook});
+});
+
+
+
+
+
+// Route        -- /books/a/:author
+// Des          -- to get a list of books based author
+// Access       -- public
+// Method       -- get
+// Params       -- author
+// Body         -- none
+
+ourApp.get("/author" , (req, res) => {
+    const authorAll = database.authors;
+    console.log(authorAll);
+    return res.json({books : authorAll});
 });
 
 
