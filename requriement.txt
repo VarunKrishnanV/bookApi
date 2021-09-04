@@ -33,11 +33,11 @@ Books
         - ✅ 🔥 to get a list of books based on author
 
     - POST
-        - add a new book
+        - ✅ add a new book
 
     - PUT
-        - to update book details
-        - to update/add new author
+        - ✅ to update book details
+        - ✅ to update/add new author
 
     - DELETE
         - delete a book
@@ -48,14 +48,14 @@ Authors
 
     - GET
         - ✅ to get all authors
-        - 🔥to get specific author --> task
+        - ✅ 🔥 to get specific author --> task
         - to get list of author based on book
         
     - POST
-        - add new author
+        - ✅ add new author
 
     - PUT
-        - update author details
+        - ✅ 🔥 update author details
 
     - DELETE
         - delete an author
@@ -65,12 +65,12 @@ Authors
 Publications
 
     - GET
-        - 🔥 to get all publication
-        - 🔥 to get specific publication
-        - 🔥 to get list of publication based on a book
+        - ✅ 🔥 to get all publication
+        - ✅ 🔥 to get specific publication
+        - ✅ 🔥 to get list of publication based on a book
 
     - POST
-        - add new publication
+        - ✅ 🔥 add new publication
 
     - PUT
         - update publication details
@@ -78,6 +78,6 @@ Publications
 
     - DELETE
         - delete a book from publication
-        - delete a publication
+        - ✅ 🔥 delete a publication
 
 

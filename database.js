@@ -1,3 +1,20 @@
+/*
+
+Documents in MongoDB have no structure restirictions
+Documents work similar to JSON format in mongoDB
+Documents have key value pair (similar to json)
+No specific schema requried before hand like SQL database
+The data model available within
+So structuring the data is easier in mongoDB
+Scalability
+
+*/
+
+
+
+
+
+
 
 //temporary db
 
