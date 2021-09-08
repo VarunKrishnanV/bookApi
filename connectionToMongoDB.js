@@ -1,15 +1,17 @@
 const mongoose = require("mongoose");
+
 const express = require("express");
-const ourApp = express();
+
 require("dotenv").config();
 
-const Book = require("./schema/book")
-const Author = require("./schema/author")
-const Publication = require("./schema/publication")
+const ourApp = express();
 
 const database = require("./database");
 
-mongoose
+// const MONGO_URI =
+//     "mongodb+srv://varun:varun@cluster0.j3qhs.mongodb.net/BookAPI?retryWrites=true&w=majority";
+
+    mongoose
     .connect(
         process.env.MONGO_URI,
         {
@@ -22,6 +24,24 @@ mongoose
     .then(() => console.log("DB connected successfully"))
     .catch((err) => console.log(err));
 
+
+
+// const mongoDB = async () => {
+//     await mongoose
+//     .connect(
+//         "mongodb+srv://varun:varun@cluster0.j3qhs.mongodb.net/BookAPI?retryWrites=true&w=majority",
+//         {
+//             useNewUrlParser: true,
+//             useUnifiedTopology: true,
+//             // useFindAndModify: false,
+//             // useCreateIndex : true
+//         }
+//     )
+//     .then(() => console.log("DB connected successfully"))
+//     .catch((err) => console.log(err));
+// };
+
+// mongoDB();
 
 ourApp.use(express.json());
 
@@ -40,13 +60,8 @@ ourApp.get("/", (request, response) => {
 // Params       -- none
 // Body         -- none
 
-// ourApp.get("/books", (req, res) => {
-//     res.json({ books: database.books });
-// });
-
-ourApp.get("/books", async (req, res) => {
-    const getAllBooks = await Book.find();
-    return res.json(getAllBooks);
+ourApp.get("/books", (req, res) => {
+    res.json({ books: database.books });
 });
 
 // Route        -- books/:bookID
@@ -56,29 +71,13 @@ ourApp.get("/books", async (req, res) => {
 // Params       -- bookID
 // Body         -- none
 
-// ourApp.get("/books/:bookID", (req, res) => {
-//     const specificBook = database.books.filter(
-//         (book) => book.ISBN == req.params.bookID
-//     );
+ourApp.get("/books/:bookID", (req, res) => {
+    const specificBook = database.books.filter(
+        (book) => book.ISBN == req.params.bookID
+    );
 
-//     return res.json({ books: specificBook });
-// });
-
-ourApp.get("/books/:bookID", async (req, res) => {
-    const getSpecificBook = await Book.findOne({ISBN : req.params.bookID})
-
-    if (!getSpecificBook) {
-        return res.json({
-            error : `No book found for the ISBN of ${req.params.bookID}`
-        })
-    }
-    return res.json({book : getSpecificBook});
+    return res.json({ books: specificBook });
 });
-
-
-
-
-
 
 // Route        -- /books/c/:category
 // Des          -- to get a list of books based on category
@@ -118,28 +117,12 @@ ourApp.get("/books/a/:author", (req, res) => {
 // Method       -- post
 // Params       -- none
 
-// ourApp.post("/books/new", (req, res) => {
-//     const { newBook } = req.body;
-//     console.log(newBook);
-//     database.books.push(newBook);
-//     return res.json(database.books);
-// });
-
-ourApp.post("/books/new", async (req, res) => {
-    try{
-        const {newBook} = req.body;
-        await Book.create(newBook);
-        return res.json({message : 'Book added to the database'})
-    }catch(error){
-        return res.json({error : error.message})
-    }
+ourApp.post("/books/new", (req, res) => {
+    const { newBook } = req.body;
+    console.log(newBook);
+    database.books.push(newBook);
+    return res.json(database.books);
 });
-
-
-
-
-
-
 
 // Route        -- /books/update
 // Des          -- Update any details of a book
